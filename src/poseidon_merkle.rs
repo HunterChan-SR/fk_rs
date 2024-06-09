@@ -3,7 +3,7 @@ use ark_crypto_primitives::crh::poseidon::{TwoToOneCRH, CRH};
 use ark_crypto_primitives::crh::{CRHScheme, CRHSchemeGadget};
 use ark_crypto_primitives::crh::{TwoToOneCRHScheme, TwoToOneCRHSchemeGadget};
 use ark_crypto_primitives::sponge::poseidon::PoseidonConfig;
-use ark_ed_on_bls12_381::Fr;
+use ark_bls12_381::Fr;
 use ark_r1cs_std::alloc::AllocVar;
 use ark_r1cs_std::{
     fields::fp::{AllocatedFp, FpVar},
@@ -12,11 +12,13 @@ use ark_r1cs_std::{
 use ark_relations::r1cs::{ConstraintSystem, ConstraintSystemRef, Field, Namespace};
 use ark_std::UniformRand;
 
+#[derive(Clone)]
 pub struct MerkleTree {
     pub params: PoseidonConfig<Fr>,
     pub nodes: Vec<Fr>,
 }
 
+#[derive(Clone)]
 pub struct MerklePath {
     pub poof_nodes: Vec<Fr>,
     pub index_on_tree: u32,

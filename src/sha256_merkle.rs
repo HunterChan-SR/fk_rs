@@ -2,7 +2,7 @@ use ark_crypto_primitives::crh::{CRHScheme, TwoToOneCRHScheme, TwoToOneCRHScheme
 use ark_crypto_primitives::crh::sha256::constraints::{Sha256Gadget, UnitVar};
 use ark_crypto_primitives::crh::sha256::digest::consts::U8;
 use ark_crypto_primitives::crh::sha256::Sha256;
-use ark_ed_on_bls12_381::Fr;
+use ark_bls12_381::Fr;
 use ark_r1cs_std::prelude::UInt8;
 use ark_r1cs_std::{R1CSVar, ToBytesGadget};
 use ark_relations::r1cs::{ConstraintSystem, ConstraintSystemRef, Field, Namespace};
@@ -19,6 +19,7 @@ pub struct MerklePath {
     pub poof_nodes: Vec<Vec<u8>>,
     pub index_on_tree: u32,
 }
+
 
 impl MerkleTree {
     pub fn new(depth: u8) -> MerkleTree {
